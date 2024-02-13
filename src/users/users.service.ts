@@ -4,38 +4,57 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { UsersEntity } from './entities/user.entity';
+import { ErrorManager } from '../utils/error.manager';
+import { ProgressStackDto } from './dto/progress-stack.dto';
+import { ProgressStacksEntity } from './entities/progressStacks.entity';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(UsersEntity)
     private readonly userRepository: Repository<UsersEntity>,
+    @InjectRepository(ProgressStacksEntity)
+    private readonly progressStacksEntity: Repository<ProgressStacksEntity>,
   ) {}
 
   public async create(userDto: UserDto): Promise<UsersEntity> {
     try {
       return await this.userRepository.save(userDto);
     } catch (error) {
-      throw new Error(error);
+      throw new ErrorManager.createSignatureError(error.message);
     }
   }
 
   public async findAll(): Promise<UsersEntity[]> {
     try {
-      return await this.userRepository.find();
+      const users: UsersEntity[] = await this.userRepository.find();
+      if (users.length === 0) {
+        throw new ErrorManager({
+          type: 'NOT_FOUND',
+          message: 'No users found',
+        });
+      }
+      return users;
     } catch (error) {
-      throw new Error(error);
+      throw ErrorManager.createSignatureError(error.message);
     }
   }
 
   public async findOne(id: string): Promise<UsersEntity> {
     try {
-      return await this.userRepository
+      const user: UsersEntity = await this.userRepository
         .createQueryBuilder('user')
         .where({ id })
         .getOne();
+      if (!user) {
+        throw new ErrorManager({
+          type: 'NOT_FOUND',
+          message: 'No user found',
+        });
+      }
+      return user;
     } catch (error) {
-      throw new Error(error);
+      throw ErrorManager.createSignatureError(error.message);
     }
   }
 
@@ -49,11 +68,14 @@ export class UsersService {
         updateUserDto,
       );
       if (user.affected === 0) {
-        return undefined;
+        throw new ErrorManager({
+          type: 'NOT_FOUND',
+          message: 'Cant update - No user found',
+        });
       }
       return user;
     } catch (error) {
-      throw new Error(error);
+      throw ErrorManager.createSignatureError(error.message);
     }
   }
 
@@ -61,11 +83,24 @@ export class UsersService {
     try {
       const user: DeleteResult = await this.userRepository.delete(id);
       if (user.affected === 0) {
-        return undefined;
+        throw new ErrorManager({
+          type: 'NOT_FOUND',
+          message: 'Cant delete - No user found',
+        });
       }
       return user;
     } catch (error) {
-      throw new Error(error);
+      throw ErrorManager.createSignatureError(error.message);
     }
+  }
+
+  public async addStack(progressStackDto: ProgressStackDto) {
+    return `agrega stack al usuario: ${progressStackDto}`;
+  }
+  public async getOneUserStack(userId: string, stackId: string) {
+    return `agrega stack al usuario: ${userId}, ${stackId}`;
+  }
+  public async getAllUserStack(userId: string) {
+    return `agrega stack al usuario: ${userId}`;
   }
 }

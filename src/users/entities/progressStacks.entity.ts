@@ -6,7 +6,7 @@ import { ProgressThemesEntity } from '../../themes/entities/progressTheme.entity
 
 @Entity({ name: 'progress_stacks' })
 export class ProgressStacksEntity extends BaseEntity {
-  @Column()
+  @Column({ default: 0 })
   progress: number;
 
   @ManyToOne(() => UsersEntity, (user) => user.stacks)

@@ -5,7 +5,7 @@ import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity({ name: 'stacks' })
 export class StacksEntity extends BaseEntity implements IStack {
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: false })
   name: string;
   @Column()
   points: number;

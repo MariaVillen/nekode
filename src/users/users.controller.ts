@@ -1,23 +1,23 @@
 import {
   Controller,
   Get,
-  Post,
   Body,
   Patch,
   Param,
   Delete,
+  Post,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { UserDto } from './dto/user.dto';
+import { ProgressStackDto } from './dto/progress-stack.dto';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  create(@Body() userDto: UserDto) {
-    return this.usersService.create(userDto);
+  @Post('add-stack')
+  public async create(@Body() progressStackDto: ProgressStackDto) {
+    return this.usersService.addStack(progressStackDto);
   }
 
   @Get()
@@ -28,6 +28,24 @@ export class UsersController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
+  }
+
+  @Get(':userid/stack/all')
+  public async findUserStacks(@Param('userid') userId: string) {
+    return this.usersService.getAllUserStack(userId);
+  }
+
+  @Get(':userid/stack/:id')
+  public async findOneUsertStack(
+    @Param('userid') userId: string,
+    @Param('id') stackId: string,
+  ) {
+    return this.usersService.getOneUserStack(userId, stackId);
+  }
+
+  @Post('stack')
+  public async addUserStack(@Body() progressStackDto: ProgressStackDto) {
+    return this.usersService.addStack(progressStackDto);
   }
 
   @Patch(':id')

@@ -7,23 +7,27 @@ import { NOTIFICATIONFREQUENCY } from '../../config/constants/notification_frequ
 
 @Entity({ name: 'users' })
 export class UsersEntity extends BaseEntity implements IUser {
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: false })
   username: string;
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: false })
   email: string;
-  @Column()
+  @Column({ nullable: false })
   password: string;
   @Column()
   tokenPass: string;
-  @Column({ type: 'enum', enum: ROLES })
+  @Column({ type: 'enum', enum: ROLES, default: ROLES.BASIC })
   role: ROLES;
-  @Column()
+  @Column({ default: 3 })
   life: number;
-  @Column()
+  @Column({ default: 0 })
   totalPoints: number;
-  @Column({ type: 'enum', enum: NOTIFICATIONFREQUENCY })
+  @Column({
+    type: 'enum',
+    enum: NOTIFICATIONFREQUENCY,
+    default: NOTIFICATIONFREQUENCY.DAILY,
+  })
   challengeNotification: NOTIFICATIONFREQUENCY;
-  @Column()
+  @Column({ default: true })
   notification: boolean;
   @OneToMany(() => ProgressStacksEntity, (progressStack) => progressStack.stack)
   stacks: ProgressStacksEntity[];

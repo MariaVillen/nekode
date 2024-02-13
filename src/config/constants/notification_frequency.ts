@@ -1,5 +1,5 @@
 export enum NOTIFICATIONFREQUENCY {
   NONE = 0,
-  ONEADAY = 1,
-  ONCEAWEEK = 7,
+  DAILY = 1,
+  WEEKLY = 7,
 }

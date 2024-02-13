@@ -6,11 +6,11 @@ import { Column, Entity, ManyToOne } from 'typeorm';
 
 @Entity({ name: 'themes' })
 export class ThemesEntity extends BaseEntity implements ITheme {
-  @Column()
+  @Column({ nullable: false })
   name: string;
-  @Column({ type: 'enum', enum: LEVELS })
+  @Column({ type: 'enum', enum: LEVELS, default: LEVELS.DEBUTANT })
   level: LEVELS;
-  @Column()
+  @Column({ default: 100 })
   points: number;
   @ManyToOne(() => StacksEntity, (stack) => stack.themes)
   stack: string;
