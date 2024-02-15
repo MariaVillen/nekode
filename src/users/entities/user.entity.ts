@@ -1,9 +1,10 @@
 import { BaseEntity } from '../../config/base.entity';
 import { ROLES } from '../../config/constants/roles';
-import { IUser } from '../../types/user.interface';
+import { IUser } from '../../types/types/interfaces/user.interface';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { ProgressStacksEntity } from './progressStacks.entity';
 import { NOTIFICATIONFREQUENCY } from '../../config/constants/notification_frequency';
+import { Exclude } from 'class-transformer';
 
 @Entity({ name: 'users' })
 export class UsersEntity extends BaseEntity implements IUser {
@@ -12,8 +13,10 @@ export class UsersEntity extends BaseEntity implements IUser {
   @Column({ unique: true, nullable: false })
   email: string;
   @Column({ nullable: false })
+  @Exclude()
   password: string;
-  @Column()
+  @Column({ nullable: true })
+  @Exclude()
   tokenPass: string;
   @Column({ type: 'enum', enum: ROLES, default: ROLES.BASIC })
   role: ROLES;

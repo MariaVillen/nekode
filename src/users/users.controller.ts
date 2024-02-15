@@ -10,24 +10,26 @@ import {
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ProgressStackDto } from './dto/progress-stack.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
-
-  @Post('add-stack')
-  public async create(@Body() progressStackDto: ProgressStackDto) {
-    return this.usersService.addStack(progressStackDto);
-  }
 
   @Get()
   findAll() {
     return this.usersService.findAll();
   }
 
+  @Post('stack')
+  public async create(@Body() progressStackDto: ProgressStackDto) {
+    return this.usersService.addStack(progressStackDto);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
+    return this.usersService.findUserById(id);
   }
 
   @Get(':userid/stack/all')
@@ -41,11 +43,6 @@ export class UsersController {
     @Param('id') stackId: string,
   ) {
     return this.usersService.getOneUserStack(userId, stackId);
-  }
-
-  @Post('stack')
-  public async addUserStack(@Body() progressStackDto: ProgressStackDto) {
-    return this.usersService.addStack(progressStackDto);
   }
 
   @Patch(':id')

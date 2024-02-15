@@ -10,7 +10,9 @@ import {
 import { StacksService } from './stacks.service';
 import { CreateStackDto } from './dto/create-stack.dto';
 import { UpdateStackDto } from './dto/update-stack.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Stacks')
 @Controller('stacks')
 export class StacksController {
   constructor(private readonly stacksService: StacksService) {}

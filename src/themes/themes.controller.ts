@@ -10,7 +10,9 @@ import {
 import { ThemesService } from './themes.service';
 import { CreateThemeDto } from './dto/create-theme.dto';
 import { UpdateThemeDto } from './dto/update-theme.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Themes')
 @Controller('themes')
 export class ThemesController {
   constructor(private readonly themesService: ThemesService) {}
