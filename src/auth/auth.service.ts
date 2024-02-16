@@ -23,10 +23,22 @@ export class AuthService {
         field: 'email',
         value: registerAuthDto.email,
       });
+
       if (isEmail) {
         throw new ErrorManager({
           type: 'BAD_REQUEST',
           message: 'Email already in use',
+        });
+      }
+      const isUsername = await this.usersService.findUserBy({
+        field: 'username',
+        value: registerAuthDto.username,
+      });
+
+      if (isUsername) {
+        throw new ErrorManager({
+          type: 'BAD_REQUEST',
+          message: 'Username already in use',
         });
       }
       registerAuthDto.password = await hash(registerAuthDto.password, 10);
