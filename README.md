@@ -1,73 +1,107 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+<h1 align = "center"> NEKODE </h1>
+<p align = "center"> agregar imagen<img src = "linkImagen" /></p>
+<p align = "center"> Nekode es una plataforma para que puedas evaluar de forma lúdica tus conocimientos en distintas áreas como....COMPLETAR</p>
+<br><br>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## FRONTEND
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Desarrollada con: 🛠️
 
-## Description
+Usar aqui para badges https://home.aveek.io/GitHub-Profile-Badges/
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Requerimientos
 
-## Installation
+### Documentacion
 
-```bash
-$ npm install
+### Instrucciones:
+
+### Deploy 📋
+
+<br><br>
+
+## BACKEND
+
+<br/>
+
+### Desarrollada con: 🛠️
+
+<br/>
+
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-squareflat-square&logo=javascript&logoColor=black)
+![Typescriot](https://img.shields.io/badge/TypeScript-007ACC?style=flat-squareflat-square&logo=typescript&logoColor=white)
+![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=flat-squareflat-square&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=flat-squareflat-square&logo=express&logoColor=%2361DAFB)
+![Nest.js](https://img.shields.io/badge/NestJS-E0234E.svg?style=flat-squareflat-square&logo=NestJS&logoColor=white)
+![JWT](https://img.shields.io/badge/json%20web%20tokens-323330?style=flat-squareflat-square&logo=json-web-tokens&logoColor=pink)
+![Postgre](https://img.shields.io/badge/PostgreSQL-316192?style=flat-squareflat-square&logo=postgresql&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-squareflat-square&logo=postman&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991.svg?style=flat-squareflat-square&logo=OpenAI&logoColor=white)
+![TypeOrm](https://img.shields.io/badge/TypeORM-E83524?style=flat-squareflat-square&logo=typeorm&logoColor=white)
+![NODEMAILER](https://img.shields.io/badge/nodemailer-CB3837.svg?style=flat-squareflat-square&logo=npm&logoColor=white)
+![ENV](https://img.shields.io/badge/.ENV-ECD53F.svg?style=flat-squareflat-square&logo=dotenv&logoColor=black)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D.svg?style=flat-squareflat-square&logo=Swagger&logoColor=black)
+![ESLINT](https://img.shields.io/badge/eslint-3A33D1?style=flat-squareflat-square&logo=eslint&logoColor=white)
+![PRETTIER](https://img.shields.io/badge/prettier-1A2C34?style=flat-squareflat-square&logo=prettier&logoColor=F7BA3E)
+![Git](https://img.shields.io/badge/Git-F05032.svg?style=flat-squareflat-square&logo=Git&logoColor=white)
+![Slack](https://img.shields.io/badge/Slack-4A154B.svg?style=flat-squareflat-square&logo=Slack&logoColor=white)
+![Discord](https://img.shields.io/badge/Discord-5865F2.svg?style=flat-squareflat-square&logo=Discord&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC.svg?style=flat-squareflat-square&logo=Visual-Studio-Code&logoColor=white)
+<br/>
+<br/>
+
+### Requerimientos 📋
+
+Para poder correr el servidor necesitas tener instalado NODEJS y NPM.
+Tambien necesitas una key de OPENAI para el servicio de preguntas y respuestas.
+Necesitas una key de google console para el servicio de mail con Nodemailer.
+<br/><br/>
+
+### Documentacion
+
+[Users Stories](https://docs.google.com/document/d/16x0sYgoeFEt4D3vPSPaTOTju1cOy-13f/edit?usp=sharing&ouid=100530841611688647093&rtpof=true&sd=true)
+
+[Documentación Entities y Endpoints](https://docs.google.com/document/d/1LmHfukfJfrR7wwEu7PBfiBvKXNnC6x1x5zCYGRiF4yE/edit?usp=sharing)
+
+[Documentación Base de datos](https://drive.google.com/file/d/1--KIXqEQqCCLTVGoBLSqCeAxpzBUNFjs/view?usp=sharing)
+<br/>
+
+### Instrucciones:
+
+- Ir a la carpeta server
+
+- Instalar dependencias con `npm i`
+
+- Crear un archivo .env con las siguientes variables:
+
+```
+#SERVER
+PORT=8000
+
+#DB
+POSTGRES_DB=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_HOST=
+POSTGERS_PORT=5432
+
+#AUTH
+JWTAUTH_SECRET=
+JWTAUTH_EXPIRESIN=
+
+#OPENAI
+OPENAI_API_KEY=
 ```
 
-## Running the app
+- Correr el servidor con `npm run start:dev` o `npm start`
 
-```bash
-# development
-$ npm run start
+- La api correrá en el puesto especificado en el archivo .development.env
+  <br/>
+  <br/>
 
-# watch mode
-$ npm run start:dev
+### Deploy 📋
 
-# production mode
-$ npm run start:prod
-```
+Puedes encontrar nuestra API en el siguiente link: [https://link](link)
 
-## Test
+<br/><br/>
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+<br/><br/>
