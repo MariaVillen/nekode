@@ -14,13 +14,17 @@ import { UpdateStackDto } from './dto/update-stack.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { PublicAccess } from 'src/auth/decorators/public.decorator';
 import { AuthGuard } from 'src/auth/guards/auth.guard';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { ROLES } from 'src/config/constants/roles';
 
 @ApiTags('Stacks')
-@UseGuards(AuthGuard)
+@UseGuards(AuthGuard, RolesGuard)
 @Controller('stacks')
 export class StacksController {
   constructor(private readonly stacksService: StacksService) {}
 
+  @Roles(ROLES.ADMIN)
   @Post()
   create(@Body() createStackDto: CreateStackDto) {
     return this.stacksService.create(createStackDto);
@@ -32,16 +36,18 @@ export class StacksController {
     return this.stacksService.findAll();
   }
   @PublicAccess()
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(':stackId')
+  findOne(@Param('stackId') id: string) {
     return this.stacksService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateStackDto: UpdateStackDto) {
+  @Roles(ROLES.ADMIN)
+  @Patch(':stackId')
+  update(@Param('stackId') id: string, @Body() updateStackDto: UpdateStackDto) {
     return this.stacksService.update(+id, updateStackDto);
   }
 
+  @Roles(ROLES.ADMIN)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.stacksService.remove(+id);
