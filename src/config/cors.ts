@@ -9,7 +9,7 @@ export const corsOptions: CorsOptions = {
     'https://s13-02-m-node-react.vercel.app',
     'https://nekode.vercel.app',
     'https://nekode.vercel.app/',
-  ],,
+  ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   credentials: true,
 };
