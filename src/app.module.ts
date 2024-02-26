@@ -10,6 +10,7 @@ import { ThemesModule } from './themes/themes.module';
 import { StacksModule } from './stacks/stacks.module';
 import { UsersModule } from './users/users.module';
 import { MailerModule } from './mailer/mailer.module';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { MailerModule } from './mailer/mailer.module';
     ThemesModule,
     StacksModule,
     MailerModule,
+    FilesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
