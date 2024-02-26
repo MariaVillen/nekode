@@ -1,60 +1,68 @@
-<h1 align = "center"> NEKODE </h1>
-<p align = "center"> agregar imagen<img src = "linkImagen" /></p>
-<p align = "center"> Nekode es una plataforma para que puedas evaluar de forma lúdica tus conocimientos en distintas áreas como....COMPLETAR</p>
-<br><br>
+<h1 align = "center"> <img src="https://i.imgur.com/3gWep0X.png" width=30> NEKODE <img src="https://i.imgur.com/3gWep0X.png" width=30>  </h1>
+<p align = "center"><img src="https://i.imgur.com/3gWep0X.png" /></p>
+<p align = "center"> Nekode es una plataforma innovadora en el ámbito edtech que transforma el aprendizaje de JavaScript en una experiencia lúdica y envolvente. Con funciones de juego, como niveles y vidas, te permite evaluar tus conocimientos de manera interactiva. Además, cuenta con un sistema de ranking que mide tu progreso y lo compara con otros jugadores, asignando niveles y medallas para reconocer tus logros. Nekode ofrece valiosos feedbacks personalizados, indicándote las áreas específicas de JavaScript que debes reforzar, brindándote una ruta clara para mejorar tus habilidades en programación</p>
+<hr>
 
-## FRONTEND
+## Beneficios Clave 🚀
+
+- **Evaluación continua:** La plataforma te permite evaluar tus conocimientos de manera regular y ver tu progreso a lo largo del tiempo, lo que puede ayudarte a identificar áreas en las que necesitas mejorar.
+
+- **Competencia saludable:** El ranking te permite competir con otros usuarios de la plataforma, lo que puede motivarte a esforzarte más y mejorar tus habilidades para alcanzar una posición más alta en el ranking.
+
+- **Feedback inmediato:** Al completar los desafíos, recibes un feedback inmediato sobre tu desempeño, lo que te permite corregir errores y mejorar rápidamente.
+
+<hr>
+
+## FRONTEND 🖼️💻
 
 ### Desarrollada con: 🛠️
 
-Usar aqui para badges https://home.aveek.io/GitHub-Profile-Badges/
+![Vercel](https://img.shields.io/badge/Vercel-000000.svg?style=for-the-badge&logo=Vercel&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Redux ToolKit](https://img.shields.io/badge/Redux-764ABC.svg?style=for-the-badge&logo=Redux&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4.svg?style=for-the-badge&logo=Axios&logoColor=white)
+![Material UI](https://img.shields.io/badge/Material%20Design-757575.svg?style=for-the-badge&logo=Material-Design&logoColor=white)
 
-### Requerimientos
+### Requerimientos ✔📋
 
 ### Documentacion
 
-### Instrucciones:
+> [!IMPORTANT]
+> Configuraciones Necesarias
 
-### Deploy 📋
+### Deploy 🚀🚀
 
-<br><br>
+Puedes encontrar nuestra APP en el siguiente link: [https://link]()
 
-## BACKEND
+<hr>
 
-<br/>
+## BACKEND 🧠💻
 
 ### Desarrollada con: 🛠️
 
-<br/>
-
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-squareflat-square&logo=javascript&logoColor=black)
-![Typescriot](https://img.shields.io/badge/TypeScript-007ACC?style=flat-squareflat-square&logo=typescript&logoColor=white)
-![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=flat-squareflat-square&logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=flat-squareflat-square&logo=express&logoColor=%2361DAFB)
-![Nest.js](https://img.shields.io/badge/NestJS-E0234E.svg?style=flat-squareflat-square&logo=NestJS&logoColor=white)
-![JWT](https://img.shields.io/badge/json%20web%20tokens-323330?style=flat-squareflat-square&logo=json-web-tokens&logoColor=pink)
-![Postgre](https://img.shields.io/badge/PostgreSQL-316192?style=flat-squareflat-square&logo=postgresql&logoColor=white)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-squareflat-square&logo=postman&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991.svg?style=flat-squareflat-square&logo=OpenAI&logoColor=white)
-![TypeOrm](https://img.shields.io/badge/TypeORM-E83524?style=flat-squareflat-square&logo=typeorm&logoColor=white)
-![NODEMAILER](https://img.shields.io/badge/nodemailer-CB3837.svg?style=flat-squareflat-square&logo=npm&logoColor=white)
-![ENV](https://img.shields.io/badge/.ENV-ECD53F.svg?style=flat-squareflat-square&logo=dotenv&logoColor=black)
-![Swagger](https://img.shields.io/badge/Swagger-85EA2D.svg?style=flat-squareflat-square&logo=Swagger&logoColor=black)
-![ESLINT](https://img.shields.io/badge/eslint-3A33D1?style=flat-squareflat-square&logo=eslint&logoColor=white)
-![PRETTIER](https://img.shields.io/badge/prettier-1A2C34?style=flat-squareflat-square&logo=prettier&logoColor=F7BA3E)
-![Git](https://img.shields.io/badge/Git-F05032.svg?style=flat-squareflat-square&logo=Git&logoColor=white)
-![Slack](https://img.shields.io/badge/Slack-4A154B.svg?style=flat-squareflat-square&logo=Slack&logoColor=white)
-![Discord](https://img.shields.io/badge/Discord-5865F2.svg?style=flat-squareflat-square&logo=Discord&logoColor=white)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC.svg?style=flat-squareflat-square&logo=Visual-Studio-Code&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black)
+![Typescrit](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
+![NodeJS](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Nest.js](https://img.shields.io/badge/NestJS-E0234E.svg?style=for-the-badge&logo=NestJS&logoColor=white)
+![JWT](https://img.shields.io/badge/JSON%20Web%20Tokens-000000.svg?style=for-the-badge&logo=JSON-Web-Tokens&logoColor=white)
+![Postgre](https://img.shields.io/badge/PostgreSQL-4169E1.svg?style=for-the-badge&logo=PostgreSQL&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37.svg?style=for-the-badge&logo=Postman&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991.svg?style=for-the-badge&logo=OpenAI&logoColor=white)
+![TypeOrm](https://img.shields.io/badge/Typeform-262627.svg?style=for-the-badge&logo=Typeform&logoColor=white)
+![ENV](https://img.shields.io/badge/.ENV-ECD53F.svg?style=for-the-badge&logo=dotenv&logoColor=black)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D.svg?style=for-the-badge&logo=Swagger&logoColor=black)
+![ESLINT](https://img.shields.io/badge/ESLint-4B32C3.svg?style=for-the-badge&logo=ESLint&logoColor=white)
+![PRETTIER](https://img.shields.io/badge/Prettier-F7B93E.svg?style=for-the-badge&logo=Prettier&logoColor=black)
+![Render](https://img.shields.io/badge/Render-46E3B7.svg?style=for-the-badge&logo=Render&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032.svg?style=for-the-badge&logo=Git&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC.svg?style=for-the-badge&logo=Visual-Studio-Code&logoColor=white)
 <br/>
 <br/>
 
-### Requerimientos 📋
+### Requerimientos ✔📋
 
-Para poder correr el servidor necesitas tener instalado NODEJS y NPM.
-Tambien necesitas una key de OPENAI para el servicio de preguntas y respuestas.
-Necesitas una key de google console para el servicio de mail con Nodemailer.
-<br/><br/>
+- Para poder correr el servidor necesitas tener instalado NODEJS y NPM.
+- Tambien necesitas una key de OPENAI para el servicio de preguntas y respuestas. <a href="https://www.openai.com/">OpenIA</a>
 
 ### Documentacion
 
@@ -65,43 +73,41 @@ Necesitas una key de google console para el servicio de mail con Nodemailer.
 [Documentación Base de datos](https://drive.google.com/file/d/1--KIXqEQqCCLTVGoBLSqCeAxpzBUNFjs/view?usp=sharing)
 <br/>
 
+> [!IMPORTANT]
+> Configuraciones Necesarias
+
 ### Instrucciones:
 
 - Ir a la carpeta server
 
 - Instalar dependencias con `npm i`
 
-- Crear un archivo .env con las siguientes variables:
+- Crear un archivo **`.env`** (Producción) y o **`.development.env`** (desarrollo) con las siguientes variables:
 
-```
+```env
 #SERVER
-PORT=8000
+PORT=Puerto en el cual se va a ejecutar el servidor
 
 #DB
-POSTGRES_DB=
-POSTGRES_USER=
-POSTGRES_PASSWORD=
-POSTGRES_HOST=
-POSTGERS_PORT=5432
+POSTGRES_DB=Nombre de la base de datos de PostgreSQL a utilizar
+POSTGRES_USER=Nombre de usuario de PostgreSQL
+POSTGRES_PASSWORD=Contraseña del usuario de PostgreSQL
+POSTGRES_HOST=Host donde se encuentra la base de datos de PostgreSQL
+POSTGRES_PORT=Puerto en el que se ejecuta la base de datos de PostgreSQL
 
 #AUTH
-JWTAUTH_SECRET=
-JWTAUTH_EXPIRESIN=
+JWTAUTH_SECRET=Clave secreta utilizada para generar el token JWT
+JWTAUTH_EXPIRESIN=Tiempo de vida del token JWT en segundos
 
 #OPENAI
-OPENAI_API_KEY=
+OPENAI_API_KEY=Clave de la API de OpenAI
 ```
 
-- Correr el servidor con `npm run start:dev` o `npm start`
+- Correr el servidor con `npm run start:dev`(Producción) o `npm start:prod`(desarrollo)
 
-- La api correrá en el puesto especificado en el archivo .development.env
+- La api correrá en el puesto especificado en la variable de entorno
   <br/>
-  <br/>
 
-### Deploy 📋
+### Deploy 🚀🚀
 
-Puedes encontrar nuestra API en el siguiente link: [https://link](link)
-
-<br/><br/>
-
-<br/><br/>
+Puedes encontrar nuestra API en el siguiente link: [https://link]()

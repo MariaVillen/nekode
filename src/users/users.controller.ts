@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Controller,
   Get,
@@ -7,64 +8,80 @@ import {
   Delete,
   Post,
   UseGuards,
+  Query,
+  ValidationPipe,
+  Req,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ProgressStackDto } from './dto/progress-stack.dto';
-import { ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from 'src/auth/guards/auth.guard';
-import { PublicAccess } from 'src/auth/decorators/public.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { CreateProgressStackDto } from './dto/create-progress-stack.dto';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '../auth/guards/auth.guard';
+import { PublicAccess } from '../auth/decorators/public.decorator';
+import { RolesGuard } from '../auth/guards/roles.guard';
 import { ROLES } from 'src/config/constants/roles';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { UserQueryDto } from './dto/theme-query.dto';
+import { ErrorManager } from 'src/utils/error.manager';
 
-@ApiTags('Users')
+@ApiTags('users')
+@ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // get all users
+  @Post('add-stack') // Correct decorator with method name
+  async addStackToUser(
+    @Body() progressStackDto: CreateProgressStackDto,
+    @Req() req,
+  ) {
+    const userAuth = req.userAuth;
+    return this.usersService.addStackToUser(progressStackDto, userAuth);
+  }
+
   @Get()
   @PublicAccess()
-  findAll() {
-    return this.usersService.findAll();
+  findAll(@Query(new ValidationPipe({ transform: true })) query: UserQueryDto) {
+    return this.usersService.findAll(query);
   }
 
-  //Add a stack to the user
-  @Post('stack')
-  public async create(@Body() progressStackDto: ProgressStackDto) {
-    return this.usersService.addStack(progressStackDto);
-  }
-
-  // Get a user by Id
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
+    const user = await this.usersService.findUserById(id);
+    if (!user) {
+      throw new ErrorManager({
+        type: 'NOT_FOUND',
+        message: 'No user found',
+      });
+    }
     return this.usersService.findUserById(id);
   }
 
-  // get all the user's stack
   @Get(':userid/stack/all')
   public async findUserStacks(@Param('userid') userId: string) {
     return this.usersService.getAllUserStack(userId);
   }
 
-  // get one stack of the user
-  @Get(':userid/stack/:stackId')
+  @Get(':userid/stack/:id')
   public async findOneUsertStack(
     @Param('userid') userId: string,
-    @Param('stackId') stackId: string,
+    @Param('id') stackId: string,
   ) {
     return this.usersService.getOneUserStack(userId, stackId);
   }
 
-  // Update user
+  // modifiy username, avatar, notification, notificationchallenge
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(id, updateUserDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+    @Req() req,
+  ) {
+    const { userAuth } = req;
+    return this.usersService.update(id, updateUserDto, userAuth);
   }
 
-  // remove User
   @Roles(ROLES.ADMIN)
   @Delete(':id')
   remove(@Param('id') id: string) {
