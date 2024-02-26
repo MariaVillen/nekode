@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { ThemesModule } from './themes/themes.module';
 import { StacksModule } from './stacks/stacks.module';
 import { UsersModule } from './users/users.module';
+import { MailerModule } from './mailer/mailer.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     ThemesModule,
     StacksModule,
+    MailerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
