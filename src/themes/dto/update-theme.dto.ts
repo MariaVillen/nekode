@@ -1,3 +1,4 @@
+import { ApiPropertyOptional } from '@nestjs/swagger';
 import {
   IsEnum,
   IsNotEmpty,
@@ -12,9 +13,11 @@ export class UpdateThemeDto {
   @IsOptional()
   @IsString()
   @IsNotEmpty()
+  @ApiPropertyOptional()
   name: string;
 
   @IsOptional()
+  @ApiPropertyOptional()
   @IsEnum(LEVELS, {
     message: 'Solo hay actualmente niveles 1, 2 y 3',
   })
@@ -24,15 +27,18 @@ export class UpdateThemeDto {
   @IsOptional()
   @IsNumber()
   @IsNotEmpty()
+  @ApiPropertyOptional()
   points: number;
 
   @IsString()
   @IsOptional()
+  @ApiPropertyOptional()
   description: string;
 
   @IsNumber()
   @IsOptional()
   @IsNotEmpty()
+  @ApiPropertyOptional()
   @IsPositive({ message: 'El número de orden debe ser positivo' })
   order: number;
 }

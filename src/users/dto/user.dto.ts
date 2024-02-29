@@ -32,6 +32,9 @@ export class UserDto {
   @IsInt()
   life: number;
 
+  @IsString()
+  avatar: string;
+
   @IsInt()
   totalPoints: number;
 

@@ -15,7 +15,7 @@ import { CreateStackDto } from './dto/create-stack.dto';
 import { UpdateStackDto } from './dto/update-stack.dto';
 import { PublicAccess } from '../auth/decorators/public.decorator';
 import { AuthGuard } from '../auth/guards/auth.guard';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiBody, ApiOperation } from '@nestjs/swagger';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { ROLES } from '../config/constants/roles';
@@ -29,8 +29,14 @@ import { StackQueryDto } from './dto/query-stack.dto';
 export class StacksController {
   constructor(private readonly stacksService: StacksService) {}
 
-  @Roles(ROLES.ADMIN)
   @Post()
+  @Roles(ROLES.ADMIN)
+  @ApiOperation({
+    summary: 'Create a Stack to add to the Roadmap',
+    description:
+      'This stack is created by the admin an add to a roadmap. Do not use it for manage users progress stack',
+  })
+  @ApiBody({ type: CreateStackDto })
   public async create(@Body() createStackDto: CreateStackDto) {
     try {
       const { name } = createStackDto;
@@ -39,7 +45,6 @@ export class StacksController {
         value: name,
         caseInsensitive: true,
       });
-      console.log('HAY NOMBRE?', isName);
       if (isName) {
         throw new ErrorManager({
           type: 'BAD_REQUEST',
@@ -54,6 +59,11 @@ export class StacksController {
 
   @PublicAccess()
   @Get()
+  @ApiOperation({
+    summary: 'Get all the stacks',
+    description:
+      'Get the stacks ordered (orderBy: field + order:value) or with pagination (page: number of page to show + limit: numbers of registries per page',
+  })
   findAll(
     @Query(new ValidationPipe({ transform: true })) query: StackQueryDto,
   ) {
@@ -62,18 +72,32 @@ export class StacksController {
 
   @PublicAccess()
   @Get(':id')
+  @ApiOperation({
+    summary: 'Get a stack by id',
+    description: 'Get one stack by Id',
+  })
   findOne(@Param('id') id: string) {
     return this.stacksService.findStackById(id);
   }
 
   @Roles(ROLES.ADMIN)
   @Patch(':id')
+  @ApiOperation({
+    summary: 'Modify a stack',
+    description: 'Modify the name or description of a stack',
+  })
+  @ApiBody({ type: UpdateStackDto })
   update(@Param('id') id: string, @Body() updateStackDto: UpdateStackDto) {
     return this.stacksService.update(id, updateStackDto);
   }
 
   @Roles(ROLES.ADMIN)
   @Delete(':id')
+  @ApiOperation({
+    summary: 'Delete a stack',
+    description:
+      'Delete a stack. ATTENTION: this will delete of the themes related to that stack',
+  })
   remove(@Param('id') id: string) {
     return this.stacksService.remove(id);
   }

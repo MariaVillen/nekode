@@ -1,17 +1,14 @@
-import {
-  IsNumber,
-  IsPositive,
-  IsString,
-  Min,
-  MinLength,
-} from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
 export class CreateStackDto {
   @IsString()
   @MinLength(1)
+  @ApiProperty()
   name: string;
 
-  @IsNumber()
-  @IsPositive()
-  @Min(1)
-  points: number;
+  @IsString()
+  @IsNotEmpty()
+  @ApiPropertyOptional()
+  @IsOptional()
+  description: string;
 }

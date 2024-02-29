@@ -5,8 +5,6 @@ export const corsOptions: CorsOptions = {
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'http://localhost:3001',
-    'https://s13-02-m-node-react.vercel.app/',
-    'https://s13-02-m-node-react.vercel.app',
     'https://nekode.vercel.app',
     'https://nekode.vercel.app/',
   ],

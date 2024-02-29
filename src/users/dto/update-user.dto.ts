@@ -1,7 +1,6 @@
 import {
   IsBoolean,
   IsEnum,
-  IsInt,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -22,16 +21,6 @@ export class UpdateUserDto {
 
   @IsOptional()
   @IsNotEmpty()
-  @IsInt()
-  life: number;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsInt()
-  totalPoints: number;
-
-  @IsOptional()
-  @IsNotEmpty()
   @IsEnum(NOTIFICATIONFREQUENCY)
   challengeNotification: NOTIFICATIONFREQUENCY;
 
@@ -39,4 +28,9 @@ export class UpdateUserDto {
   @IsNotEmpty()
   @IsBoolean()
   notification: boolean;
+
+  @IsOptional()
+  @IsNotEmpty()
+  @IsString()
+  avatar: string;
 }

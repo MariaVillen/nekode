@@ -10,9 +10,9 @@ import {
   ADMIN_KEY,
   PUBLIC_KEY,
   ROLES_KEY,
-} from 'src/config/constants/key-decorators';
+} from '../../config/constants/key-decorators';
 import { Request } from 'express';
-import { ROLES } from 'src/config/constants/roles';
+import { ROLES } from '../../config/constants/roles';
 
 @Injectable()
 export class RolesGuard implements CanActivate {

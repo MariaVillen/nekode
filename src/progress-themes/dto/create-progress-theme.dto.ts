@@ -1,15 +1,14 @@
-import { IsInt, IsNotEmpty, IsOptional, IsUUID } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsUUID } from 'class-validator';
 
 export class CreateProgressThemesDto {
-  @IsInt()
-  @IsOptional()
-  progress: number;
-
   @IsUUID()
   @IsNotEmpty()
+  @ApiProperty()
   theme: string;
 
   @IsUUID()
   @IsNotEmpty()
+  @ApiProperty()
   progressStack: string;
 }

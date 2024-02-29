@@ -7,7 +7,6 @@ import * as jwt from 'jsonwebtoken';
 export const useToken = (token: string): IUseToken | string => {
   try {
     const decode = jwt.decode(token) as IAuthTokenResult;
-    console.log(decode);
     const isExpired = +decode.exp <= Date.now() / 1000;
 
     return {
@@ -16,7 +15,6 @@ export const useToken = (token: string): IUseToken | string => {
       isExpired,
     };
   } catch (error) {
-    console.log(error);
     return 'Token is invalid';
   }
 };
