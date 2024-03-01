@@ -2,7 +2,7 @@ import { Address } from 'nodemailer/lib/mailer';
 
 export class CreateMailerDto {
   from?: Address;
-  recipients: Address[];
+  bcc: Address[];
   subject: string;
   html: string;
   text?: string;

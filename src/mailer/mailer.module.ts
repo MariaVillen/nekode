@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MailerService } from './mailer.service';
-import { MailerController } from './mailer.controller';
+import { OAuthConfig } from './oauth.config';
 
 @Module({
-  controllers: [MailerController],
-  providers: [MailerService],
+  providers: [MailerService, OAuthConfig],
 })
 export class MailerModule {}

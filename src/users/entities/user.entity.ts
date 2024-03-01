@@ -43,6 +43,9 @@ export class UsersEntity extends BaseEntity implements IUser {
   })
   challengeNotification: NOTIFICATIONFREQUENCY;
 
+  @Column({ nullable: true })
+  lastNotificationDate: Date;
+
   @Column({ default: true })
   notification: boolean;
 

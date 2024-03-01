@@ -1,6 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, EntityManager, Repository, UpdateResult } from 'typeorm';
+import {
+  DeleteResult,
+  EntityManager,
+  LessThan,
+  Repository,
+  UpdateResult,
+  IsNull,
+} from 'typeorm';
 import { UsersEntity } from './entities/user.entity';
 import { RegisterAuthDto } from '../auth/dto/register-auth.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -9,6 +16,8 @@ import { TQueryPagination } from '../types/types/queryPaginations';
 import { hash } from 'bcrypt';
 import { ErrorManager } from '../utils/error.manager';
 import { UserQueryDto } from './dto/user-query.dto';
+import { ExtendedUpdateUserDto } from 'src/types/types/usersTypes';
+import { Address } from 'nodemailer/lib/mailer';
 
 @Injectable()
 export class UsersService {
@@ -156,6 +165,7 @@ export class UsersService {
     userAuth: { role: string; id: string },
   ): Promise<UpdateResult | undefined> {
     try {
+      // Updating Roles?
       if (updateUserDto.role && userAuth.role !== 'ADMIN') {
         throw new ErrorManager({
           type: 'FORBIDDEN',
@@ -171,10 +181,17 @@ export class UsersService {
           message: 'You have no privileges for perform this action',
         });
       }
+      // Updating ChallengeNotification?
+      let updatedUser: ExtendedUpdateUserDto = { ...updateUserDto };
+      if (
+        updateUserDto.challengeNotification !== userFound.challengeNotification
+      ) {
+        updatedUser = { ...updateUserDto, lastNotificationDate: new Date() };
+      }
 
       const user: UpdateResult = await this.userRepository.update(
         id,
-        updateUserDto,
+        updatedUser,
       );
       if (user.affected === 0) {
         throw new ErrorManager({
@@ -234,6 +251,60 @@ export class UsersService {
       }
     } catch (error) {
       console.log(error);
+      throw ErrorManager.createSignatureError(error.message);
+    }
+  }
+
+  // Functions for Notification Mailing
+  public async getUsersWithNotificationsDaily() {
+    try {
+      const users = await this.userRepository.find({
+        where: { challengeNotification: 1 },
+        select: ['username', 'email'], // Seleccionar solo los campos necesarios
+      });
+      const modifiedUsers = users.map((user) => ({
+        name: user.username,
+        address: user.email,
+      }));
+
+      return modifiedUsers;
+    } catch (error) {
+      throw ErrorManager.createSignatureError(error.message);
+    }
+  }
+
+  public async getUsersWithNotificationsWeekly() {
+    try {
+      const aWeekAgo = new Date();
+      aWeekAgo.setDate(aWeekAgo.getDate() - 7);
+      const users = await this.userRepository.find({
+        where: {
+          challengeNotification: 7,
+          lastNotificationDate: LessThan(aWeekAgo) || IsNull(),
+        },
+        select: ['username', 'email'],
+      });
+      const modifiedUsers = users.map((user) => ({
+        name: user.username,
+        address: user.email,
+      }));
+
+      return modifiedUsers;
+    } catch (error) {
+      throw ErrorManager.createSignatureError(error.message);
+    }
+  }
+
+  public async updateLastNotificationDate(users: Address[]) {
+    try {
+      const userEmails = users.map((user) => user.address);
+      await this.userRepository
+        .createQueryBuilder()
+        .update()
+        .set({ lastNotificationDate: new Date() })
+        .where('email IN (:...emails)', { emails: userEmails })
+        .execute();
+    } catch (error) {
       throw ErrorManager.createSignatureError(error.message);
     }
   }

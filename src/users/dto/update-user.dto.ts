@@ -12,25 +12,25 @@ export class UpdateUserDto {
   @IsOptional()
   @IsNotEmpty()
   @IsString()
-  username: string;
+  username?: string;
 
   @IsOptional()
   @IsNotEmpty()
   @IsEnum(ROLES)
-  role: ROLES;
+  role?: ROLES;
 
   @IsOptional()
   @IsNotEmpty()
   @IsEnum(NOTIFICATIONFREQUENCY)
-  challengeNotification: NOTIFICATIONFREQUENCY;
+  challengeNotification?: NOTIFICATIONFREQUENCY;
 
   @IsOptional()
   @IsNotEmpty()
   @IsBoolean()
-  notification: boolean;
+  notification?: boolean;
 
   @IsOptional()
   @IsNotEmpty()
   @IsString()
-  avatar: string;
+  avatar?: string;
 }

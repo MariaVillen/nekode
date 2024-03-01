@@ -1,5 +1,6 @@
 import {
   IsBoolean,
+  IsDate,
   IsEmail,
   IsEnum,
   IsInt,
@@ -40,6 +41,9 @@ export class UserDto {
 
   @IsEnum(NOTIFICATIONFREQUENCY)
   challengeNotification: NOTIFICATIONFREQUENCY;
+
+  @IsDate()
+  lastNotificationDate: Date;
 
   @IsBoolean()
   notification: boolean;
