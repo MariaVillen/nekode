@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
   DeleteResult,
@@ -18,12 +18,15 @@ import { ErrorManager } from '../utils/error.manager';
 import { UserQueryDto } from './dto/user-query.dto';
 import { ExtendedUpdateUserDto } from 'src/types/types/usersTypes';
 import { Address } from 'nodemailer/lib/mailer';
+import { FilesService } from 'src/files/files.service';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(UsersEntity)
     private readonly userRepository: Repository<UsersEntity>,
+    @Inject(FilesService)
+    private readonly filesService: FilesService,
   ) {}
 
   /**
@@ -163,6 +166,7 @@ export class UsersService {
     id: string,
     updateUserDto: UpdateUserDto,
     userAuth: { role: string; id: string },
+    avatarFile?: Express.Multer.File,
   ): Promise<UpdateResult | undefined> {
     try {
       // Updating Roles?
@@ -181,6 +185,11 @@ export class UsersService {
           message: 'You have no privileges for perform this action',
         });
       }
+      // Adding new filename to avatar
+      if (avatarFile) {
+        updateUserDto.avatar = avatarFile.filename;
+      }
+
       // Updating ChallengeNotification?
       let updatedUser: ExtendedUpdateUserDto = { ...updateUserDto };
       if (
@@ -194,10 +203,28 @@ export class UsersService {
         updatedUser,
       );
       if (user.affected === 0) {
+        if (avatarFile) {
+          const deletedFile = this.filesService.remove(avatarFile.filename);
+          if (!deletedFile) {
+            console.log(
+              `Coudn't delete ${avatarFile.filename} file, you should remove it manually`,
+            );
+          }
+        }
         throw new ErrorManager({
           type: 'NOT_FOUND',
           message: 'Cant update - No user found',
         });
+      }
+
+      // Removing older image
+      if (avatarFile && userFound.avatar) {
+        const deletedFile = this.filesService.remove(userFound.avatar);
+        if (!deletedFile) {
+          console.log(
+            `Coudn't delete ${userFound.avatar} file, you should remove it manually`,
+          );
+        }
       }
       return user;
     } catch (error) {
@@ -207,12 +234,23 @@ export class UsersService {
 
   public async remove(id: string): Promise<DeleteResult | undefined> {
     try {
+      const userFound = await this.findUserById(id);
+      const avatarPath = userFound.avatar;
+
       const user: DeleteResult = await this.userRepository.delete(id);
       if (user.affected === 0) {
         throw new ErrorManager({
           type: 'NOT_FOUND',
           message: 'Cant delete - No user found',
         });
+      }
+      if (userFound.avatar) {
+        const deletedFile = this.filesService.remove(avatarPath);
+        if (!deletedFile) {
+          console.log(
+            `Coudn't delete ${avatarPath} file, you should remove it manually`,
+          );
+        }
       }
       return user;
     } catch (error) {

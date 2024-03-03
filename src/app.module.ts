@@ -18,6 +18,7 @@ import { MailerModule } from './mailer/mailer.module';
 import { CronModule } from './cron/cron.module';
 import { MailerService } from './mailer/mailer.service';
 import { OAuthConfig } from './mailer/oauth.config';
+import { FilesModule } from './files/files.module';
 
 console.log(process.env.NODE_ENV);
 @Module({
@@ -36,6 +37,7 @@ console.log(process.env.NODE_ENV);
     CronModule,
     ProgressThemesModule,
     ProgressStacksModule,
+    FilesModule,
   ],
   controllers: [AppController],
   providers: [

@@ -10,6 +10,8 @@ import {
   Query,
   ValidationPipe,
   Req,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { PublicAccess } from '../auth/decorators/public.decorator';
@@ -22,6 +24,11 @@ import { RolesGuard } from '../auth/guards/roles.guard';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserQueryDto } from './dto/user-query.dto';
 import { Request } from 'express';
+import { editFileName } from 'src/files/helpers/edit-file-name';
+import { imageFileFilter } from 'src/files/helpers/image-file-filter';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { join } from 'path';
 
 @ApiTags('users')
 @ApiBearerAuth()
@@ -56,9 +63,19 @@ export class UsersController {
 
   // modifiy username, avatar, notification, notificationchallenge
   @Patch(':id')
+  @UseInterceptors(
+    FileInterceptor('avatar', {
+      storage: diskStorage({
+        destination: join(__dirname, '..', '..', 'static', 'avatars'),
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
+    }),
+  )
   update(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
+    @UploadedFile() avatar: Express.Multer.File,
     @Req() req: Request,
   ) {
     const { userAuth } = req;

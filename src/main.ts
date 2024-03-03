@@ -10,9 +10,11 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { join } from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   // Prefix /api/
   app.setGlobalPrefix('api');
   createSwagger(app);
@@ -36,6 +38,12 @@ async function bootstrap() {
   // Cors
   app.enableCors(corsOptions);
 
+  // Static Folder
+
+  app.useStaticAssets(join(__dirname, '..', 'public'), {
+    index: false,
+    prefix: '/public',
+  });
   // server
   const configService = app.get(ConfigService);
   await app.listen(configService.get('PORT'));
