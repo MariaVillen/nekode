@@ -40,8 +40,7 @@ export class FilesService {
     return `This action updates a #${id} file`;
   }
 
-  remove(id: string) {
-    const filename = id;
+  remove(filename: string) {
     const filePath = `${join(__dirname, '..', '..', 'public', 'avatar')}/${filename}`;
     console.log('filePath ', filePath);
     try {

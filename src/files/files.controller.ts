@@ -16,7 +16,6 @@ import { diskStorage } from 'multer';
 import { editFileName } from './helpers/edit-file-name';
 import { imageFileFilter } from './helpers/image-file-filter';
 import { join } from 'path';
-
 @Controller('files')
 export class FilesController {
   constructor(private readonly filesService: FilesService) {}
